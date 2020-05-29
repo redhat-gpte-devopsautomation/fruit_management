@@ -55,4 +55,14 @@ public class Fruit {
     public int hashCode() {
         return Objects.hash(id, name, description, quantity);
     }
+
+    @Override
+    public String toString() {
+        return "Fruit{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

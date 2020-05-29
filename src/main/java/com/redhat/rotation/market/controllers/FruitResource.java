@@ -2,6 +2,8 @@ package com.redhat.rotation.market.controllers;
 
 import com.redhat.rotation.market.model.Fruit;
 import com.redhat.rotation.market.service.FruitService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -15,6 +17,7 @@ import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
 @Path("market/fruits")
 public class FruitResource {
+    private final Logger log = LoggerFactory.getLogger(FruitResource.class);
 
     @Inject
     FruitService fruitService;
@@ -22,12 +25,14 @@ public class FruitResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void createFruit(Fruit fruit) {
+        log.debug("Creating a new fruit: {}", fruit);
         fruitService.createFruit(fruit);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Fruit> findAllFruits() {
+        log.debug("Finding all existing fruits ...");
         return fruitService.findAllFruits();
     }
 

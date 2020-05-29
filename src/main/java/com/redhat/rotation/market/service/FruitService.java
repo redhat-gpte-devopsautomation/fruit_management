@@ -1,6 +1,9 @@
 package com.redhat.rotation.market.service;
 
+import com.redhat.rotation.market.controllers.FruitResource;
 import com.redhat.rotation.market.model.Fruit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
@@ -10,9 +13,12 @@ import java.util.Random;
 
 @ApplicationScoped
 public class FruitService {
+    private final Logger log = LoggerFactory.getLogger(FruitService.class);
+
     private List<Fruit> allFruits = new ArrayList<>();
 
     public void createFruit(Fruit fruit) {
+        log.debug("Creating a random Id ...");
         // creates a random id
         fruit.setId(new Random().nextInt(10000));
         allFruits.add(fruit);
