@@ -21,7 +21,7 @@ The application can be tested by calling some endpoints.
 
 Create a new fruit
 ```
-curl -w "\n" -X POST 'http://localhost:8080/market/fruits' \
+curl -w "\n" -v -X POST 'http://localhost:8080/market/fruits' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "apple",
