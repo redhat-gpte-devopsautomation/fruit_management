@@ -1,6 +1,5 @@
 package com.redhat.rotation.market.service;
 
-import com.redhat.rotation.market.controllers.FruitResource;
 import com.redhat.rotation.market.model.Fruit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,7 @@ public class FruitService {
     private List<Fruit> allFruits = new ArrayList<>();
 
     public void createFruit(Fruit fruit) {
-        log.debug("Creating a random Id ...");
+        log.debug("Creating a new fruit with: {}", fruit);
         // creates a random id
         fruit.setId(new Random().nextInt(10000));
         allFruits.add(fruit);
@@ -46,5 +45,10 @@ public class FruitService {
     public boolean deleteFruitById(long id) {
         // performs the deletion
         return allFruits.removeIf($ -> $.getId() == id);
+    }
+
+    public void deleteAll() {
+        // removes all the elements
+        allFruits.clear();
     }
 }

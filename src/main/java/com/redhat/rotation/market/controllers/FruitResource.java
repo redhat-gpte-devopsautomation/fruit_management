@@ -41,6 +41,7 @@ public class FruitResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response findFruitById(@PathParam("id") long id) {
         Optional<Fruit> found = fruitService.findFruitById(id);
+        log.debug("Fruit found for a given id: {} is: {}", id, found);
         return found.isPresent() ? ok(found.get()).build() : status(NOT_FOUND).build();
     }
 
@@ -48,6 +49,7 @@ public class FruitResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateFruitById(@PathParam("id") long id, Fruit fruit) {
+        log.debug("Fruit to be updated: {}", id);
         Optional<Fruit> found = fruitService.updateFruitById(id, fruit);
         return found.isPresent() ? ok(found.get()).build() : status(NOT_FOUND).build();
     }
@@ -56,6 +58,7 @@ public class FruitResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteFruitById(@PathParam("id") long id) {
+        log.debug("Fruit to be deleted: {}", id);
         return fruitService.deleteFruitById(id) ? noContent().build() : status(NOT_FOUND).build();
     }
 }
