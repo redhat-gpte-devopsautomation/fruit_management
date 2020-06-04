@@ -14,10 +14,18 @@ The application is now runnable using
 ``` 
 java -jar target/fruit-management-1.0-SNAPSHOT-runner.jar
 ```
+## Testing the application with JUnit
 
-## Testing the application
+By default, the application would run all the unit tests, but this can be disabled by adding a flag which would cause the
+application to build faster.
+``` 
+mvn clean install -DskipTests=true
+```
 
-The application can be tested by calling some endpoints.
+## Testing the application with curl
+
+If you need to see the application in action, there are some endpoints available which can be invoked by using curl
+or any other tool like Postman.
 
 Create a new fruit
 ```
