@@ -31,7 +31,7 @@ Create a new fruit
 ```
 curl -w "\n" -v -X POST 'http://localhost:8080/market/fruits' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
     "name": "apple",
     "description": "An apple is an edible fruit produced by an apple tree",
     "quantity": 1
@@ -49,7 +49,7 @@ Updating an existing fruit:
 ```
 curl -w "\n" -v -X PUT 'http://localhost:8080/market/fruits/654' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
     "name": "apple",
     "description": "The new description should go here",
     "quantity": 5
