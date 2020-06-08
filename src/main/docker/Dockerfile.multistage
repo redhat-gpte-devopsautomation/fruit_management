@@ -24,3 +24,6 @@ USER 1001
 
 # run the app
 CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
+
+# docker build -f src/main/docker/Dockerfile.multistage -t quarkus-market/fruit-management .
+# docker run -d -p 8080:8080 quarkus-market/fruit-management

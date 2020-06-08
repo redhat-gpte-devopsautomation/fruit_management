@@ -1,8 +1,10 @@
 package com.redhat.rotation.market.model;
 
+import io.quarkus.mongodb.panache.PanacheMongoEntity;
+
 import java.util.Objects;
 
-public class Fruit {
+public class Fruit extends PanacheMongoEntity {
     private long id;
     private String name;
     private String description;
