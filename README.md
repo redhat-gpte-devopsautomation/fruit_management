@@ -52,7 +52,7 @@ oc new-app openshift/mongodb-ephemeral -p MONGODB_PASSWORD=abc123 -p MONGODB_USE
 ```
 Once it's deployed, now we need to create a template and create a new app from it.
 ```
-oc create -f https://github.com/redhat-gpte-devopsautomation/fruit_management/blob/master/.openshift-template.yaml
+oc create -f https://raw.githubusercontent.com/redhat-gpte-devopsautomation/fruit_management/master/.openshift-template.yaml
 ```
 Create now the fruit app (notice how we are passing environment variables to the app).
 If we don't need a MongoDB, there's no need to pass any variable during the application creation.
