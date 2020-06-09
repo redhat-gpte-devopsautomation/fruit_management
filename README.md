@@ -1,5 +1,6 @@
 # Fruit Management
-The fruit management app is a simple quarkus application that can be run in your local machine and OpenShift 
+The fruit management app is a simple quarkus application that can be run in your [`local`](#running-the-application-in-your-local-machine) 
+machine and [`OpenShift`](#running-the-application-on-openshift) 
 using the following two different persistence modes:
 - Using a MongoDB database.
 - Using just a simple list.
