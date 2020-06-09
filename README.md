@@ -63,14 +63,14 @@ oc new-app fruit-quarkus -e quarkus.mongodb.connection-string=mongodb://admin:ab
 - ## Testing the application with curl
 Depending on where you are running your application, the `$BASE_URL` is different.
 - From your local machine: `http://localhost:8080`
-- From OpenShift (depends on project and cluster name): `http://fruit-quarkus-management.apps.shared-dev4.dev4.openshift.opentlc.com`
+- From OpenShift (depends on project and cluster name): `http://fruit-quarkus-fruit-management.apps.shared-dev4.dev4.openshift.opentlc.com`
 
 If you need to see the application in action, there are some endpoints available which can be invoked by using curl
 or any other tool like Postman.
 
 Create a new fruit
 ```
-curl -w "\n" -v -X POST 'http://localhost:8080/market/fruits' \
+curl -w "\n" -v -X POST '{$BASE_URL}/market/fruits' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "apple",
@@ -80,15 +80,15 @@ curl -w "\n" -v -X POST 'http://localhost:8080/market/fruits' \
 ```
 Retrieve all existing fruits:
 ```
-curl -w "\n" -v http://localhost:8080/market/fruits
+curl -w "\n" -v {$BASE_URL}/market/fruits
 ```
 Retrieve one single fruit:
 ```
-curl -w "\n" -v http://localhost:8080/market/fruits/34
+curl -w "\n" -v {$BASE_URL}/market/fruits/34
 ```
 Updating an existing fruit:
 ```
-curl -w "\n" -v -X PUT 'http://localhost:8080/market/fruits/654' \
+curl -w "\n" -v -X PUT '{$BASE_URL}/market/fruits/654' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "apple",
@@ -98,6 +98,6 @@ curl -w "\n" -v -X PUT 'http://localhost:8080/market/fruits/654' \
 ```
 Deleting an existing fruit:
 ```
-curl -w "\n" -v -X DELETE http://localhost:8080/market/fruits/74
+curl -w "\n" -v -X DELETE {$BASE_URL}/market/fruits/74
 ```
 
