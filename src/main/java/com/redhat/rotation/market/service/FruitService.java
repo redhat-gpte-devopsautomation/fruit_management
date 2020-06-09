@@ -17,4 +17,6 @@ public interface FruitService {
     boolean deleteFruitById(long id);
 
     void deleteAll();
+
+    String findEnv();
 }

@@ -100,4 +100,7 @@ Deleting an existing fruit:
 ```
 curl -w "\n" -v -X DELETE {$BASE_URL}/market/fruits/74
 ```
-
+> Extra: Which mode are we calling?
+```
+curl -w "\n" -v {$BASE_URL}/market/fruits/env
+```

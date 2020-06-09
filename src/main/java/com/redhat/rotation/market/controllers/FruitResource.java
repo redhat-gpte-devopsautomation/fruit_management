@@ -22,6 +22,14 @@ public class FruitResource {
     @Inject
     FruitService fruitService;
 
+    @GET
+    @Path("/env")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findEnv() {
+        log.debug("Finding environment...");
+        return ok(fruitService.findEnv()).build();
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void createFruit(Fruit fruit) {

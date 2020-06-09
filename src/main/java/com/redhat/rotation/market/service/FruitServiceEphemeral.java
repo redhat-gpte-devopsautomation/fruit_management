@@ -49,4 +49,10 @@ public class FruitServiceEphemeral implements FruitService {
         // removes all the elements
         allFruits.clear();
     }
+
+    @Override
+    public String findEnv() {
+        // return the env.
+        return this.getClass().getName();
+    }
 }

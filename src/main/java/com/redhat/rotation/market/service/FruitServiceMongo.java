@@ -55,4 +55,10 @@ public class FruitServiceMongo implements FruitService {
         // removes all the elements
         Fruit.deleteAll();
     }
+
+    @Override
+    public String findEnv() {
+        // return the env.
+        return this.getClass().getName();
+    }
 }
