@@ -1,10 +1,14 @@
 package com.redhat.rotation.market.controllers;
 
+import static javax.ws.rs.core.Response.created;
 import static javax.ws.rs.core.Response.noContent;
 import static javax.ws.rs.core.Response.ok;
 import static javax.ws.rs.core.Response.status;
+import static javax.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +21,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -25,6 +31,8 @@ import org.slf4j.LoggerFactory;
 
 import com.redhat.rotation.market.model.Fruit;
 import com.redhat.rotation.market.service.FruitService;
+
+import io.vertx.core.http.HttpServerRequest;
 
 /**
  * Handles the requests to manage the Fruits.
@@ -38,6 +46,9 @@ public class FruitResource {
     @Inject
     FruitService fruitService;
 
+    @Context
+    HttpServerRequest request;
+
     @GET
     @Path("/env")
     @Produces(MediaType.APPLICATION_JSON)
@@ -48,9 +59,20 @@ public class FruitResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createFruit(Fruit fruit) {
+    public Response createFruit(Fruit fruit) {
         log.debug("Creating a new fruit: {}", fruit);
-        fruitService.createFruit(fruit);
+        long id = fruitService.createFruit(fruit);
+
+        URI uri;
+        Response response;
+
+        try {
+            uri = new URI(request.path() + "/" + id);
+            response = created(uri).build();
+        } catch (URISyntaxException e) {
+            throw new WebApplicationException(INTERNAL_SERVER_ERROR);
+        }
+        return response;
     }
 
     @GET

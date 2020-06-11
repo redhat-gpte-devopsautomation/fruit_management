@@ -17,7 +17,7 @@ public interface FruitService {
      * 
      * @param fruit The fruit to be created.
      */
-    void createFruit(Fruit fruit);
+    long createFruit(Fruit fruit);
 
     /**
      * Finds a list of all the Fruits available in the service. When no fruits exist

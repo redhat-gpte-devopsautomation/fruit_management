@@ -24,11 +24,13 @@ public class FruitServiceMongo implements FruitService {
      * {@inheritDoc}
      */
     @Override
-    public void createFruit(Fruit fruit) {
+    public long createFruit(Fruit fruit) {
         log.debug("Creating a new mongo fruit with: {}", fruit);
         // creates a random id
-        fruit.setId(new Random().nextInt(10000));
+        long id = new Random().nextInt(10000);
+        fruit.setId(id);
         fruit.persist();
+        return id;
     }
 
     /**

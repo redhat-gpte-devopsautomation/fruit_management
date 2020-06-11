@@ -35,7 +35,7 @@ public class FruitResourceTest {
                 .body(newFruit)
                 .post("market/fruits")
                 .then()
-                .statusCode(204);
+                .statusCode(201);
     }
 
     @Test
