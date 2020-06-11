@@ -1,9 +1,15 @@
 package com.redhat.rotation.market.model;
 
-import io.quarkus.mongodb.panache.PanacheMongoEntity;
-
 import java.util.Objects;
 
+import io.quarkus.mongodb.panache.PanacheMongoEntity;
+
+/**
+ * Defines a Panache entity.
+ * 
+ * @author armandorivas
+ *
+ */
 public class Fruit extends PanacheMongoEntity {
     private long id;
     private String name;
@@ -44,13 +50,13 @@ public class Fruit extends PanacheMongoEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Fruit fruit = (Fruit) o;
-        return id == fruit.id &&
-                quantity == fruit.quantity &&
-                Objects.equals(name, fruit.name) &&
-                Objects.equals(description, fruit.description);
+        return id == fruit.id && quantity == fruit.quantity && Objects.equals(name, fruit.name)
+                && Objects.equals(description, fruit.description);
     }
 
     @Override
@@ -60,11 +66,7 @@ public class Fruit extends PanacheMongoEntity {
 
     @Override
     public String toString() {
-        return "Fruit{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", quantity=" + quantity +
-                '}';
+        return "Fruit{" + "id=" + id + ", name='" + name + '\'' + ", description='" + description + '\'' + ", quantity="
+                + quantity + '}';
     }
 }

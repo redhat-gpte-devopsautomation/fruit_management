@@ -1,16 +1,29 @@
 package com.redhat.rotation.market.service;
 
-import com.redhat.rotation.market.model.Fruit;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.redhat.rotation.market.model.Fruit;
+
+/**
+ * Implementation that uses a MongoDB to store the Fruits. This implementation
+ * is enabled by using an environment variable set to false.
+ * {@code -Dfruit.storage.ephemeral=false}
+ * 
+ * @author armandorivas
+ *
+ */
 public class FruitServiceMongo implements FruitService {
     private final Logger log = LoggerFactory.getLogger(FruitService.class);
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void createFruit(Fruit fruit) {
         log.debug("Creating a new mongo fruit with: {}", fruit);
         // creates a random id
@@ -18,15 +31,27 @@ public class FruitServiceMongo implements FruitService {
         fruit.persist();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<Fruit> findAllFruits() {
         log.debug("Retrieving all the mongo fruits...");
         return Fruit.list("{}");
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Optional<Fruit> findFruitById(long id) {
         return Fruit.findByIdOptional(id);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Optional<Fruit> updateFruitById(long id, Fruit fruit) {
         Optional<Fruit> found = findFruitById(id);
         if (found.isPresent()) {
@@ -40,6 +65,10 @@ public class FruitServiceMongo implements FruitService {
         return found;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public boolean deleteFruitById(long id) {
         // performs the deletion
         Optional<Fruit> found = findFruitById(id);
@@ -51,11 +80,18 @@ public class FruitServiceMongo implements FruitService {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void deleteAll() {
         // removes all the elements
         Fruit.deleteAll();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String findEnv() {
         // return the env.

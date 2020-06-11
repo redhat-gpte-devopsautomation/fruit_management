@@ -1,20 +1,36 @@
 package com.redhat.rotation.market.controllers;
 
-import com.redhat.rotation.market.model.Fruit;
-import com.redhat.rotation.market.service.FruitService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static javax.ws.rs.core.Response.noContent;
+import static javax.ws.rs.core.Response.ok;
+import static javax.ws.rs.core.Response.status;
+import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Optional;
 
-import static javax.ws.rs.core.Response.*;
-import static javax.ws.rs.core.Response.Status.NOT_FOUND;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.redhat.rotation.market.model.Fruit;
+import com.redhat.rotation.market.service.FruitService;
+
+/**
+ * Handles the requests to manage the Fruits.
+ * 
+ * @author armandorivas
+ */
 @Path("market/fruits")
 public class FruitResource {
     private final Logger log = LoggerFactory.getLogger(FruitResource.class);

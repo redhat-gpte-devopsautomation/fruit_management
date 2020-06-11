@@ -1,24 +1,25 @@
 package com.redhat.rotation.market.controllers;
 
-import com.redhat.rotation.market.model.Fruit;
-import com.redhat.rotation.market.service.FruitService;
-import com.redhat.rotation.market.utils.MockDataUtils;
-import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.http.ContentType;
-import io.restassured.response.ValidatableResponse;
-import org.junit.jupiter.api.Test;
-
-import io.quarkus.test.junit.mockito.InjectMock;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+
+import com.redhat.rotation.market.model.Fruit;
+import com.redhat.rotation.market.service.FruitService;
+import com.redhat.rotation.market.utils.MockDataUtils;
+
+import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.mockito.InjectMock;
+import io.restassured.http.ContentType;
+import io.restassured.response.ValidatableResponse;
 
 @QuarkusTest
 public class FruitResourceTest {

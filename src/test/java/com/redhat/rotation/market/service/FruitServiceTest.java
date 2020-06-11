@@ -1,16 +1,18 @@
 package com.redhat.rotation.market.service;
 
-import com.redhat.rotation.market.model.Fruit;
-import com.redhat.rotation.market.utils.MockDataUtils;
-import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import javax.inject.Inject;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import javax.inject.Inject;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.redhat.rotation.market.model.Fruit;
+import com.redhat.rotation.market.utils.MockDataUtils;
+
+import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
 public class FruitServiceTest {
