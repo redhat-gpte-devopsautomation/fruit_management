@@ -1,5 +1,6 @@
 package com.redhat.rotation.market;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Produces;
@@ -15,16 +16,22 @@ import com.redhat.rotation.market.service.FruitServiceMongo;
 public class FruitProviderFactory {
     FruitService fruitService;
 
+    public FruitProviderFactory() { } 
+
     /**
      * By default the memory based storage will be used.
      * 
      * @param ephemeral true if we want to use a simple list to store the fruits,
      *                  otherwise it would use a MongoDB instance.
      */
-    @Inject
-    FruitProviderFactory(@ConfigProperty(name = "fruit.storage.ephemeral", defaultValue = "true") boolean ephemeral) {
-        fruitService = getFruitService(ephemeral);
-    }
+
+    @ConfigProperty(name = "fruit.storage.ephemeral", defaultValue = "true")
+    javax.enterprise.inject.Instance<Boolean> ephemeral;
+
+    @PostConstruct
+    public void setup() {
+        fruitService = getFruitService(ephemeral.get().booleanValue());        
+    }    
 
     @Produces
     @ApplicationScoped
